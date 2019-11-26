@@ -23,16 +23,10 @@ let root = "./", //+ themename + "/",
 let sassWatchFiles = scss + "**/*.scss"
 let styleWatchFiles = styl + "**/*.styl"
 
-/*let jsSRC = [
+let jsSRC = [
     js + "na.js",
-    js + "na.js",
-    js + "na.js",
-    js + "na.js",
-    js + "na.js",
-    js + "na.js",
-    js + "na.js",
-    js + "na.js",
-]*/
+    js + "na.js"
+]
 
 var cssSRC = [
     /*root + "src/css/na.css",
@@ -41,8 +35,8 @@ var cssSRC = [
     root + "default.css"
 ]
 
-/*let imgSRC = root + "src/images/*",
-    imgDEST = root + "dist/images"*/
+let imgSRC = root + "src/images/*",
+    imgDEST = root + "dist/images"
 
 function SASScss() {
     return gulp.src([scss + "default.scss"])
@@ -87,11 +81,22 @@ function STYLconcatCSS() {
 }
 
 function javascript() {
-    return
+    return gulp.src(jsSRC)
+    .pipe(concat("default.js"))
+    .pipe(uglify())
+    .pipe(lineec())
+    .pipe(gulp.dest(jsdist))
 }
 
 function imgmin() {
-    return
+    return gulp.src(imgSRC)
+    .pipe(changed(imgDEST))
+    .pipe(imagemin([
+        imagemin.gifsicle({interlaced: true}),
+        imagemin.jpegtran({progressive: true}),
+        imagemin.optipng({optimizationLevel: 5})
+    ]))
+    .pipe(gulp.dest(imgDEST))
 }
 
 function watch() {
@@ -102,6 +107,8 @@ function watch() {
     })*/
     gulp.watch(sassWatchFiles, gulp.series([SASScss, SASSconcatCSS]))
     gulp.watch(styleWatchFiles, gulp.series([STYLcss, STYLconcatCSS]))
+    /*gulp.watch(jsSRC, javascript)
+    gulp.watch(imgSRC, imgmin)*/
 }
 
 exports.SASScss = SASScss

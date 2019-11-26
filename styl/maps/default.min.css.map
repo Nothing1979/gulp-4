@@ -1,1 +1,1 @@
-{"version":3,"sources":["default.styl"],"names":[],"mappings":"AAAA,EACI,WAAA,KACJ,KACI,OAAA","file":"../default.min.css","sourcesContent":["*\r\n    background #000\r\nbody\r\n    margin 0\r\n"]}
+{"version":3,"sources":["test.styl","default.styl"],"names":[],"mappings":"AACA,EACI,WAAA,KCAJ,KACI,OAAA","file":"../default.min.css","sourcesContent":["$black = #000\r\n*\r\n    background $black","@import \"test.styl\"\r\n\r\nbody\r\n    margin 0"]}

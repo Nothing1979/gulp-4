@@ -100,11 +100,11 @@ function imgmin() {
 }
 
 function watch() {
-    /*browserSync.init({
+    browserSync.init({
         open: "external",
-        proxy: "http://localhost",
+        proxy: "http://localhost/dev/gulp-4",
         port: 8080
-    })*/
+    })
     gulp.watch(sassWatchFiles, gulp.series([SASScss, SASSconcatCSS]))
     gulp.watch(styleWatchFiles, gulp.series([STYLcss, STYLconcatCSS]))
     /*gulp.watch(jsSRC, javascript)

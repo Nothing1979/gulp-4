@@ -11,5 +11,8 @@
 <body>
 	<h1>Hello World!</h1>
 	<p>Testing branch</p>
+	<?php
+		echo "Testing PHP"
+	?>
 </body>
 </html>
